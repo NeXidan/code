@@ -1067,3 +1067,8 @@ html,body {
 .button-cursor {
     left: 45px;
 }
+
+#editor-props {
+  display: inline-block;
+  margin-left: 40px;
+}

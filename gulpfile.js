@@ -81,6 +81,8 @@ gulp.task('static-copy', function(){
     gulp.src(libs)
         .pipe(concat('libs.js'))
         .pipe(gulp.dest(path.dist.js));
+    gulp.src(path.pub.js + 'libs/ace-additional/*.js')
+        .pipe(gulp.dest(path.dist.js + 'ace-additional/'));
 });
 
 gulp.task('styles', function() {

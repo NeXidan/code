@@ -57,7 +57,7 @@ app.MainAppView = Backbone.View.extend({
 
         // событие по изменению положения курсора
         aceEditor.session.selection.on('changeCursor', function () {
-            // получение позиции курсора. здесь мы должны отправлять ее на сервер
+            // app.editorController.editor.getCursor() - получение позиции курсора. здесь мы должны отправлять ее на сервер
             // console.log(app.editorController.editor.getCursor());
         });
 
