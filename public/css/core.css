@@ -1,0 +1,73 @@
+/*****************************/
+/*** Core html setup stuff ***/
+/*****************************/
+
+
+html, body, div, span, applet, object, iframe, table, caption,
+tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, pre,
+a, abbr, acronym, address, big, cite, code, dl, dt, dd, form, label, legend {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+:focus {
+  outline: 0;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+button {overflow: visible; /* removes extra side padding in IE */}
+
+
+body {
+  color: #000;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.2;
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing: 0;
+}
+
+table, td, tr {vertical-align:top;}
+
+img { border: 0 none; }
+
+.clr,
+.clear {
+  display: block;
+  clear:both;
+  font-size:0;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
