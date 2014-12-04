@@ -60,16 +60,10 @@ gulp.task('minify', function(){
         .pipe(gulp.dest(path.dist.js));
 });
 
-gulp.task('views-concat', function() {
+gulp.task('views', function() {
     gulp.src(path.pub.views)
-        .pipe(concat('app.jsx'))
-        .pipe(gulp.dest(path.dist.views))
-});
-
-gulp.task('views-react', function() {
-    gulp.src(path.dist.views + 'app.jsx')
         .pipe(react())
-        .pipe(gulp.dest(path.dist.views));
+        .pipe(gulp.dest(path.dist.views))
 });
 
 gulp.task('static-copy', function(){
@@ -98,11 +92,7 @@ gulp.task('watch', function(){
     });
 
     gulp.watch(path.pub.views, function(){
-        gulp.start('views-concat');
-    });
-
-    gulp.watch(path.dist.views + 'app.jsx', function(){
-        gulp.start('views-react');
+        gulp.start('views');
     });
 
     gulp.watch(path.pub.js + 'app/*.js', function(){
@@ -115,5 +105,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', function(){
-  gulp.start('views-concat', 'views-react', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+    gulp.start('views', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
 });

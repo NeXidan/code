@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Step = React.createClass({
     render: function() {
         return (
@@ -20,3 +22,5 @@ var Step = React.createClass({
         );
     }
 });
+
+module.exports = Step;

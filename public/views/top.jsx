@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Profile = React.createClass({
     render: function() {
         var color = {backgroundColor: this.props.user.color};
@@ -32,3 +34,5 @@ var Top = React.createClass({
         );
     }
 });
+
+module.exports = Top;

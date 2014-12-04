@@ -1,3 +1,4 @@
+var React = require('react');
 var doc = require('../../services/doc')
 
 var Popup = React.createClass({
@@ -37,3 +38,5 @@ var Popup = React.createClass({
         );
     }
 });
+
+module.exports = Popup;

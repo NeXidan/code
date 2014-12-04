@@ -2,6 +2,9 @@ var React = require('react');
 
 var Swarm = require('swarm');
 
+var Index = require('./index');
+var Document = require('./document');
+
 var App = React.createClass({
     render: function() {
         return (
@@ -23,3 +26,4 @@ var App = React.createClass({
 });
 
 module.exports = App;
+

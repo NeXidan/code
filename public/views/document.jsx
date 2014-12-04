@@ -1,3 +1,8 @@
+var React = require('react');
+var Swarm = require('swarm');
+var Top = require('./top');
+var Bottom = require('./bottom');
+var Doc = require('./docView');
 var Text = require('swarm/lib/Text');
 var User = require('../../models/user');
 var UserCollection = require('../../models/userCollection');
@@ -10,6 +15,8 @@ var Document = React.createClass({
     gitInitialState: function() {
         return {
             user: null,
+            username: '',
+            color: '',
             users: [],
             disconnected: false
         };
@@ -37,13 +44,11 @@ var Document = React.createClass({
         } else {
         var user = Swarm.env.localhost.get(localuserID);
         }
-        this.setState({user: user});
+        this.setState({user: user, username: user.name, color: user.color});
     },
     collectionInit: function() {
         collection = Swarm.env.localhost.get('/UserCollection#' + this.sync._id);
         var user = this.state.user;
-        console.log(this.state.user);
-        console.log(collection);
         if (collection != null) {
             collection.addUnique(user);
         }  else {
@@ -94,3 +99,5 @@ var Document = React.createClass({
         );
     }
 });
+
+module.exports = Document;

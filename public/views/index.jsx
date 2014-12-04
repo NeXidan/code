@@ -1,3 +1,9 @@
+var React = require('react');
+
+var Header = require('./header');
+var Step = require('./step');
+var Popup = require('./popup');
+
 var Index = React.createClass({
     getInitialState: function(){
         return ({
@@ -24,3 +30,5 @@ var Index = React.createClass({
         );
     }
 });
+
+module.exports = Index;

@@ -1,5 +1,7 @@
+var React = require('react');
 var ChatMessages = require('../../models/chatMessages');
 var ChatMessage = require('../../models/chatMessage')
+var Swarm = require('swarm');
 
 var User = React.createClass({
     render: function() {
@@ -120,3 +122,5 @@ var Chat = React.createClass({
         );
     }
 });
+
+module.exports = Chat;

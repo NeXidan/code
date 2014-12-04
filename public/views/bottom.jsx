@@ -1,3 +1,6 @@
+var React = require('react');
+var Chat = require('./chat')
+
 var Bottom = React.createClass({
     render: function() {
         return (
@@ -8,3 +11,5 @@ var Bottom = React.createClass({
         );
     }
 });
+
+module.exports = Bottom;

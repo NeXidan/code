@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Logo = React.createClass({
     render: function() {
         return (
@@ -23,3 +25,5 @@ var Header = React.createClass({
         );
     }
 });
+
+module.exports = Header;

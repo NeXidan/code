@@ -1,3 +1,6 @@
+var React = require('react');
+var Swarm = require('swarm');
+
 var Doc = React.createClass({
     componentDidMount: function() {
         editor = new EditorManager({
@@ -31,3 +34,5 @@ var Doc = React.createClass({
         );
     }
 });
+
+module.exports = Doc;
