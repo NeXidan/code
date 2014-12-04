@@ -1,6 +1,6 @@
 # Яндекс.Код
  
-Коллаборативный редактор кода на основе комбо Swarm.js + React.js
+Коллаборативный редактор кода на основе комбо [Swarm.js](https://github.com/gritzko/swarm) + [React.js](https://github.com/facebook/react)
  
 ## Установка
  
