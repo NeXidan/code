@@ -9,7 +9,7 @@
 
 Сервер запустится по адресу http://localhost:1337/
 
-Known Bug: иногда gulp'y потребуется создать файлы index.js, step.js, popup.js в директории ./dist/views/
+Known Bug: иногда для правильного функионирования gulp'а потребуется создать файлы index.js, step.js, popup.js в директории ./dist/views/
 
 ## Структура:
 
