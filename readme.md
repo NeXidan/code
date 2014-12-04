@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Яндекс.Код}
+# Яндекс.Код
  
 Коллаборативный редактор кода на основе комбо Swarm.js + React.js
  
@@ -47,7 +45,3 @@ Known Bug: иногда gulp'y потребуется создать файлы 
 
 ##### Сервер:
 - полностью переработан сервер для работы с SharedWebStorag'ем Swarm'a и рендеринга страниц React'ом;
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
