@@ -34,26 +34,13 @@ var Message = React.createClass({
     }
 });
 
-var Chat = React.createClass({
-    mixins: [ Swarm.ReactMixin ],
-    statics: {
-        modelType: "ChatMessages"
-    },
+var ChatBox = React.createClass({
     getInitialState: function() {
         return {
             chatHeight: 224,
             isClosed: false,
             message: ''
         };
-    },
-    componentWillMount: function() {
-        var chatMessages = this.sync;
-        if (chatMessages === null) {
-            this.chatMessages = new ChatMessages({_id: this.props.key});
-        }
-    },
-    componenDidMount: function() {
-
     },
     componentDidUpdate: function(prevProps, prevState) {
         if (prevState.isClosed != this.state.isClosed) {
@@ -65,8 +52,7 @@ var Chat = React.createClass({
     },
     handleSubmit: function() {
         var message = new ChatMessage({text: this.refs.input.getDOMNode().value, name: this.props.user.name, color: this.props.user.color});
-        this.sync.addObject(message);
-        console.log(this.sync);
+        this.props.messages.addObject(message);
         this.setState({message: ''});
     },
     changeHeight: function(height) {
@@ -77,16 +63,13 @@ var Chat = React.createClass({
             message: this.refs.input.getDOMNode().value
         });
     },
-    /*shouldComponentUpdate: function(nextProps, nextState) {
-        return nextState !== this.state;
-    },*/
     render: function() {
         var users = this.props.users.objects.map(function (obj) {
             return (
                 <User name={obj.name} color={obj.color} key={obj._id} />
             );
         }, this);
-        var messages = this.sync.objects.map(function (obj) {
+        var messages = this.props.messages.objects.map(function (obj) {
             return (
                 <Message text={obj.text} name={obj.name} color={obj.color} key={obj._id}/> 
             );
@@ -114,11 +97,30 @@ var Chat = React.createClass({
                 <div className="chat__footer">
                     <input type="text" className="chat__footer__input" ref="input"
                         value={this.state.message} onChange={this.handleChange}/>
-                    <button className="btn btn--sm chat__footer__btn" onClick={this.handleSubmit}>
+                    <button className="btn btn--sm chat__footer__btn" onClick={this.handleSubmit} type="Submit">
                         Отправить
                     </button>
                 </div>
             </div>
+        );
+    }
+});
+
+
+var Chat = React.createClass({
+    mixins: [ Swarm.ReactMixin ],
+    statics: {
+        modelType: "ChatMessages"
+    },
+    componentWillMount: function() {
+        var chatMessages = this.sync;
+        if (chatMessages === null) {
+            this.chatMessages = new ChatMessages({_id: this.props.key});
+        }
+    },
+    render: function() {
+        return (
+            <ChatBox users={this.props.users} user={this.props.user} messages={this.sync}/>            
         );
     }
 });
