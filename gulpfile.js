@@ -9,18 +9,21 @@ var gulp = require('gulp'),
     csscomb = require('gulp-csscomb'),
     react = require('gulp-react'),
     browserify = require('browserify'),
-    transform = require('vinyl-transform');
+    transform = require('vinyl-transform'),
+    imagemin = require('gulp-imagemin');
 
 var path = {
     pub: {
         js: 'public/js/',
         css: 'public/css/*.css',
-        views: 'public/views/*'
+        views: 'public/views/*',
+        images: 'public/images/*'
     },
     dist: {
         js: 'dist/js/',
         css: 'dist/css/',
-        views: 'dist/views/'
+        views: 'dist/views/',
+        images: 'dist/images/'
     }
 };
 
@@ -66,6 +69,16 @@ gulp.task('views', function() {
         .pipe(gulp.dest(path.dist.views))
 });
 
+
+gulp.task('images', function(){
+    gulp.src(path.pub.images)
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+        }))
+        .pipe(gulp.dest(path.dist.images));
+});
+
 gulp.task('static-copy', function(){
     gulp.src('public/*.html')
         .pipe(gulp.dest('dist/'));
@@ -73,7 +86,7 @@ gulp.task('static-copy', function(){
         .pipe(concat('libs.js'))
         .pipe(gulp.dest(path.dist.js));
     gulp.src(path.pub.js + 'libs/ace-additional/*.js')
-        .pipe(gulp.dest(path.dist.js + 'ace-additional/'));
+        .pipe(gulp.dest(path.dist.js + 'ace-additional/'));    
 });
 
 gulp.task('styles', function() {
@@ -105,5 +118,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', function(){
-    gulp.start('views', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
 });
