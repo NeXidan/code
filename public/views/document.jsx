@@ -31,8 +31,8 @@ var Document = React.createClass({
     },
     componentDidUpdate: function() {
         var date = new Date();
-        var time = date.valueOf();
-        this.state.user.set({lastActive: time});
+        this.time = date.valueOf();
+        this.state.user.set({lastActive: this.time});
     },
     userInit: function() {   
         var localuserID = window.localStorage.getItem('localuserID');
@@ -64,10 +64,8 @@ var Document = React.createClass({
     },
     usersCheck: function() {
         this.forceUpdate();
-        var date = new Date;
-        var time = date.valueOf();
         this.state.users.objects.forEach(function(obj) {
-            if ((obj !== this.state.user) & ((time - obj.lastActive)  > this.interval)) {
+            if ((obj !== this.state.user) & ((this.time - obj.lastActive)  > this.interval)) {
                 this.userDisconnect(obj);    
             }
         }, this);

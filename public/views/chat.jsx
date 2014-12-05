@@ -82,6 +82,7 @@ var ChatBox = React.createClass({
                     <span className="icon-arrow chat__header__arrow" onClick={this.handleClick} style={arrowStyle}>
                     </span>
                 </div>
+                {!this.state.isClosed && 
                 <div className="chat__body" style={chatStyle}>
                     <div className="chat__body__box">
                         {messages}
@@ -94,12 +95,15 @@ var ChatBox = React.createClass({
                         {users}
                     </div>
                 </div>
+                }
                 <div className="chat__footer">
-                    <input type="text" className="chat__footer__input" ref="input"
-                        value={this.state.message} onChange={this.handleChange}/>
-                    <button className="btn btn--sm chat__footer__btn" onClick={this.handleSubmit} type="Submit">
-                        Отправить
-                    </button>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" className="chat__footer__input" ref="input"
+                            value={this.state.message} onChange={this.handleChange}/>
+                        <button type="submit" className="btn btn--sm chat__footer__btn">
+                            Отправить
+                        </button>
+                    </form>
                 </div>
             </div>
         );

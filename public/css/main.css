@@ -478,6 +478,10 @@ th {
     display: inline-block;
 }
 
+.cursor-p {
+    cursor: pointer;
+}
+
 .col {
     height: 100%;
     float: left;
@@ -904,6 +908,7 @@ html,body {
     background-color: #333;
     top: 8px;
     right: 8px;
+    box-shadow: -1px -1px 0 rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.1), 0 -1px 3px rgba(0,0,0,.25) inset;
 }
 
 .profile__avatar:before {
@@ -915,6 +920,7 @@ html,body {
     content: "";
     top: -15px;
     left: 8px;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.15), 0 -1px 0 rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.25);
 }
 
 .profile__name {
@@ -924,12 +930,12 @@ html,body {
 }
 
 .profile__name__input {
-    display: none;
-    font-size: 28px;
-    margin-top: 14px;
-    margin-right: 64px;
     width: 256px;
+    height: 32px;
+    padding: 10px;
     border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    font-size: 28px;
 }
 
 .user {
