@@ -97,13 +97,11 @@ var ChatBox = React.createClass({
                 </div>
                 }
                 <div className="chat__footer">
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" className="chat__footer__input" ref="input"
-                            value={this.state.message} onChange={this.handleChange}/>
-                        <button type="submit" className="btn btn--sm chat__footer__btn">
-                            Отправить
-                        </button>
-                    </form>
+                    <input type="text" className="chat__footer__input" ref="input" 
+                        value={this.state.message} onChange={this.handleChange}/>
+                    <button onClick={this.handleSubmit} className="btn btn--sm chat__footer__btn">
+                        Отправить
+                    </button>
                 </div>
             </div>
         );

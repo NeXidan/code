@@ -105,7 +105,11 @@ gulp.task('watch', function(){
     });
 
     gulp.watch(path.pub.views, function(){
-        gulp.start('views', 'minify');
+        gulp.start('views');
+    });
+
+    gulp.watch(path.dist.views, function(){
+        gulp.start('minify');
     });
 
     gulp.watch(path.pub.js + 'app/*.js', function(){

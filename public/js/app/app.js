@@ -3,7 +3,6 @@ var Spec = Swarm.Spec;
 var Syncable = Swarm.Syncable;
 var React = require('react');
 var App = require('../views/app.js');
-var User = require('../../models/user');
 
 function swarmStart(sessionId) {
     var storage = null;

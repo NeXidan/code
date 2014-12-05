@@ -1,21 +1,20 @@
 var React = require('react');
-var doc = require('../../services/doc')
+var Doc = require('../../models/doc')
 
 var Popup = React.createClass({
     getInitialState: function() {
         return {
-            content: ''
+            name: ''
         };
     },
     handleChange: function() {
         this.setState({
-            content: this.refs.textarea.getDOMNode().value
+            name: this.refs.input.getDOMNode().value
         });
     },
     handleSave: function() {
-        doc.create(/*this.state.content,*/ function(d) {
-            var win = window.open('/' + d._id, '_blank');
-            win.focus();
+        Doc.create(this.state.name, function(d) {
+            setTimeout(function() {window.location.pathname = '/' + d._id}, 300);
         })
     },
     render: function() {
@@ -25,7 +24,7 @@ var Popup = React.createClass({
                 <div className="popup--centered">
                     <div className="popup__content pos-rel">
                         <div className="popup__content__body">
-                            <textarea ref="textarea" rows="10" className="popup__content__body__text" onChange={this.handleChange}></textarea>
+                            <input ref="input" className="popup__content__body__input" onChange={this.handleChange}/>
                         </div>
                         <div className="popup__content__footer">
                             <div className="popup__content__footer__btn-wrap">

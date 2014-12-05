@@ -16,7 +16,7 @@ var App = React.createClass({
                     <link rel="stylesheet" href="css/main.css"/>
                 </head>
                 <body>
-                    {this.props.id ? <Document key={'/Text#' + this.props.id} /> : <Index />}
+                    {this.props.id ? <Document key={'/Doc#' + this.props.id} /> : <Index />}
                     <script src="js/libs.js"/>
                     <script src="js/app.js"/>
                 </body>

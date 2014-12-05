@@ -2,23 +2,22 @@ var React = require('react');
 var Swarm = require('swarm');
 var Top = require('./top');
 var Bottom = require('./bottom');
-var Doc = require('./docView');
-var Text = require('swarm/lib/Text');
+var DocView = require('./docView');
+var Doc = require('../../models/doc');
 var User = require('../../models/user');
 var UserCollection = require('../../models/userCollection');
 
 var Document = React.createClass({
     mixins: [ Swarm.ReactMixin ],
     statics: {
-        modelType: "Text"
+        modelType: "Doc"
     },
     gitInitialState: function() {
         return {
             user: null,
             username: '',
             color: '',
-            users: [],
-            disconnected: false
+            users: []
         };
     },
     componentDidMount: function() {
@@ -39,7 +38,6 @@ var Document = React.createClass({
         if (!localuserID) {
             var sessiondId = window.localStorage.getItem('localuser');
             var user = User.create(sessiondId);
-            console.log(user);
             window.localStorage.setItem('localuserID', '/User#' + user._id);
         } else {
         var user = Swarm.env.localhost.get(localuserID);
@@ -55,7 +53,7 @@ var Document = React.createClass({
             collection = new UserCollection({_id: this.sync._id});
             collection.addUnique(user);
         }
-        this.setState({users: collection, disconnected: false});
+        this.setState({users: collection});
         this.forceUpdate();
     },
     setCheckInterval: function() {
@@ -80,14 +78,14 @@ var Document = React.createClass({
         var doc = this.sync;
         return (
             <div className="main-wrap cf js-get-main-wrap">
-                <Top user={this.state.user}/>
+                <Top docName={doc.name} user={this.state.user}/>
                 <div className="main main--padding">
                     <div className="col col--left w--20">
                         <div className="folders">
                         </div>
                     </div>
                     <div className="col w--65">
-                        <Doc doc={doc} users={this.state.users} user={this.state.user}/>
+                        <DocView doc={doc} users={this.state.users} user={this.state.user}/>
                     </div>
                     <div className="col col--right w--15">
                     </div>

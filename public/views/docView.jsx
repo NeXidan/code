@@ -3,10 +3,11 @@ var Swarm = require('swarm');
 
 var Doc = React.createClass({
     componentDidMount: function() {
-        editor = new EditorManager({
-            editorId: 'editor'
-        });
         var doc = this.props.doc;
+        editor = new EditorManager({
+            editorId: 'editor',
+            mode: doc.extension
+        });
         editor.dataSet(doc.text);
         if (this.props.users !== undefined) {
             editor.updateOtherCursor(this.props.users.objects);

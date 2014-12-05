@@ -59,7 +59,7 @@ var Top = React.createClass({
                         </a>
                     </div>
                     <span className="project__name">
-                        /&nbsp;Project
+                        &nbsp;/&nbsp;{this.props.docName}
                     </span>
                 </div>
                 {this.props.user !== undefined && <Profile user={this.props.user}/>}

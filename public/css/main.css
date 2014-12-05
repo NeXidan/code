@@ -634,17 +634,21 @@ html,body {
     display: inline-block;
 
     background-color: #fff;
-
+    
     width: 40%;
-    padding: 30px;
+    padding: 15px 15px 0 15px;
 }
 
 .popup__content__body {
-    margin-bottom: 15px;
 }
 
-.popup__content__body__text {
+.popup__content__body__input {
+    font-size: 16px;
     width: 100%;
+    height: 28px;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 2px;
 }
 
 .popup__content__footer {

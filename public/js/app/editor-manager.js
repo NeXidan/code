@@ -6,11 +6,53 @@ EditorManager = function (options) {
 
     this.ace = ace.edit(this.options.editorId);
     ace.config.set('basePath', 'js/ace-additional/');
-    this.ace.getSession().setUseWorker(false);
-    this.ace.session.setMode('ace/mode/javascript');
+    this.ace.getSession().setUseWorker(true);
     this.ace.setTheme('ace/theme/xcode');
 
+    this.setMode();
+
     this.otherCursors = [];
+};
+
+EditorManager.prototype.setMode = function () {
+    switch (this.options.mode) {
+        case 'js':
+            this.ace.session.setMode('ace/mode/javascript');
+            break;
+        case 'html':
+            this.ace.session.setMode('ace/mode/html');
+            break;
+        case 'css':
+            this.ace.session.setMode('ace/mode/css');
+            break;
+        case 'json':
+            this.ace.session.setMode('ace/mode/json');
+            break;
+        case 'java':
+            this.ace.session.setMode('ace/mode/java');
+            break;
+        case 'jsx':
+            this.ace.session.setMode('ace/mode/jsx');
+            break;
+        case 'php':
+            this.ace.session.setMode('ace/mode/php');
+            break;
+        case 'scala':
+            this.ace.session.setMode('ace/mode/scala');
+            break;
+        case 'scss':
+            this.ace.session.setMode('ace/mode/scss');
+            break;
+        case 'c':
+            this.ace.session.setMode('ace/mode/c_cpp');
+            break;
+        case 'cs':
+            this.ace.session.setMode('ace/mode/csharp;');
+            break;
+        default:
+            this.ace.session.setMode('ace/mode/text');
+            break;
+    }
 };
 
 EditorManager.prototype.setCursor = function (row, col) {
