@@ -1,17 +1,20 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Яндекс.Код}
- 
-Коллаборативный редактор кода на основе комбо Swarm.js + React.js
+<p align="center">
+  <a href="https://github.com/NeXidan/team-3">
+    <img height="67" width="268" src="https://cloud.githubusercontent.com/assets/8440686/5315471/d48a1efa-7c8e-11e4-8a0d-22d4c54ad90d.png">
+  </a>
+</p>
+
+
+Коллаборативный редактор кода на основе комбо [Swarm.js](https://github.com/gritzko/swarm) + [React.js](https://github.com/facebook/react)
  
 ## Установка
  
     git clone https://github.com/NeXidan/team-3
     npm install
 
-Сервер запустится по адресу http://localhost:1337/
+Сервер запустится по адресу [http://localhost:1337/](http://localhost:1337/)
 
-Known Bug: иногда gulp'y потребуется создать файлы index.js, step.js, popup.js в директории ./dist/views/
+> <b>Known Bug</b>: иногда для правильного функионирования gulp'а потребуется создать файлы `index.js`, `step.js`, `popup.js` в директории `./dist/views/`
 
 ## Структура:
 
@@ -32,7 +35,7 @@ Known Bug: иногда gulp'y потребуется создать файлы 
 - помощь в разработке синхронизации текста Swarm'ом;
 
 ##### Сервер:
-- скрипт сборки сервера;
+- скрипт сборки автоматического запуска gulp'a и запуска сервера;
 
 ## Собственные изменения:
 
@@ -41,13 +44,10 @@ Known Bug: иногда gulp'y потребуется создать файлы 
 
 ##### Клиент:
 - переход с Backbone на React (модно, стильно, молодежно);
+- документы со своим id;
 - пользователи, находящиеся онлайн;
 - курсоры каждого пользователя различного цвета;
 - мини-чат (так же на Swarm, почему бы и нет?) (недоработан);
 
 ##### Сервер:
 - полностью переработан сервер для работы с SharedWebStorag'ем Swarm'a и рендеринга страниц React'ом;
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
