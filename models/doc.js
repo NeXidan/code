@@ -18,6 +18,13 @@ function create(name, callback) {
     }
 };
 
+function download(doc) {
+   /* var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(doc.text));
+    pom.setAttribute('download', doc.name);
+    pom.click();*/
+}
+
 var Doc = Syncable.extend('Doc', {
     // naive uncompressed CT weave implementation
     defaults: {
@@ -181,3 +188,4 @@ Doc.diff = function diff(was, is) {
 
 module.exports = Doc;
 module.exports.create = create;
+module.exports.download = download;

@@ -1,4 +1,5 @@
 var React = require('react');
+var Doc = require('../../models/doc');
 
 var Profile = React.createClass({
     getInitialState: function() {
@@ -49,6 +50,17 @@ var Profile = React.createClass({
 });
 
 var Top = React.createClass({
+    componentDidMount: function() {
+        this.download(this.props.doc);
+    },
+    componentWillReceiveProps: function(nextProps) {
+        this.download(nextProps.doc);
+    },
+    download: function(doc) {
+        var pom = this.refs.a.getDOMNode();
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(doc.text));
+        pom.setAttribute('download', doc.name);
+    },
     render: function() {
         return (
             <div className="panel panel--top">
@@ -59,9 +71,10 @@ var Top = React.createClass({
                         </a>
                     </div>
                     <span className="project__name">
-                        &nbsp;/&nbsp;{this.props.docName}
+                        &nbsp;/&nbsp;{this.props.doc.name}
                     </span>
                 </div>
+                <a ref="a" className="project__download"/>
                 {this.props.user !== undefined && <Profile user={this.props.user}/>}
             </div>
         );

@@ -78,7 +78,7 @@ var Document = React.createClass({
         var doc = this.sync;
         return (
             <div className="main-wrap cf js-get-main-wrap">
-                <Top docName={doc.name} user={this.state.user}/>
+                <Top doc={doc} user={this.state.user}/>
                 <div className="main main--padding">
                     <div className="col col--left w--20">
                         <div className="folders">
