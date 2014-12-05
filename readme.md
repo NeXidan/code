@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="http://gulpjs.com">
-    <img height="257" width="114" src="https://cloud.githubusercontent.com/assets/8440686/5315471/d48a1efa-7c8e-11e4-8a0d-22d4c54ad90d.png">
+  <a href="https://github.com/NeXidan/team-3">
+    <img height="67" width="268" src="https://cloud.githubusercontent.com/assets/8440686/5315471/d48a1efa-7c8e-11e4-8a0d-22d4c54ad90d.png">
   </a>
 </p>
 
