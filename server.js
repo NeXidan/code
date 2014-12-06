@@ -12,10 +12,10 @@ var EinarosWSStream = Swarm.EinarosWSStream;
 
 var development = process.env.NODE_ENV !== 'production';
 
-app.get('/', function(req, res, next) {
+app.get('/', function (req, res, next) {
     var path = url.parse(req.url).pathname;
     var app = App({id: null, app: path});
-    ReactAsync.renderComponentToStringWithAsyncState(app, function(err, markup) {
+    ReactAsync.renderComponentToStringWithAsyncState(app, function (err, markup) {
         if (err) {
             return next(err);
         }
@@ -23,10 +23,10 @@ app.get('/', function(req, res, next) {
     });
 });
 
-app.get('/:id', function(req, res, next) {
+app.get('/:id', function (req, res, next) {
     var path = url.parse(req.url).pathname;
     var app = App({id: req.params.id, app: path});
-    ReactAsync.renderComponentToStringWithAsyncState(app, function(err, markup) {
+    ReactAsync.renderComponentToStringWithAsyncState(app, function (err, markup) {
         if (err) {
             return next(err);
         }
@@ -41,7 +41,7 @@ Swarm.env.localhost = swarmHost;
 
 var httpServer = http.createServer(app);
 
-httpServer.listen(1337, function() {
+httpServer.listen(1337, function () {
     console.log('Server started at http://localhost:1337');
 });
 
