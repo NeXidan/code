@@ -5,7 +5,7 @@ var UserCollection = Swarm.Vector.extend('UserCollection', {
     defaults: {
         objectType: User
     },
-    addUnique: function(obj){
+    addUnique: function (obj){
         if(this.objects.indexOf(obj) == -1) {
             this.addObject(obj);
             return true;
