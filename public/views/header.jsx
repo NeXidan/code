@@ -16,6 +16,7 @@ var Logo = React.createClass({
         );
     }
 });
+
 var Header = React.createClass({
     render: function() {
         return (

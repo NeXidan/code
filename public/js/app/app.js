@@ -2,7 +2,7 @@ var Swarm = require('swarm');
 var Spec = Swarm.Spec;
 var Syncable = Swarm.Syncable;
 var React = require('react');
-var App = require('../views/app.js');
+var App = require('../views/app');
 
 function swarmStart(sessionId) {
     var storage = null;
@@ -10,7 +10,6 @@ function swarmStart(sessionId) {
     var wsServer = 'ws://' + window.location.host;
     var swarmHost = Swarm.env.localhost = new Swarm.Host(sessionId, 0, storage);
     swarmHost.connect(wsServer, {delay: 50});
-    console.log(Swarm.env.localhost);
 }
 
 if (window !== undefined) {

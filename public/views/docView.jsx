@@ -2,7 +2,7 @@ var React = require('react');
 var Swarm = require('swarm');
 
 var Doc = React.createClass({
-    componentDidMount: function() {
+    componentDidMount: function () {
         var doc = this.props.doc;
         editor = new EditorManager({
             editorId: 'editor',
@@ -14,7 +14,8 @@ var Doc = React.createClass({
         }   
         editor.onChange(editor, doc);
     },
-    componentWillUpdate: function() {
+
+    componentWillUpdate: function () {
         var currCursorPosition = editor.getCursor();
         editor.dataSet(this.props.doc.text);
         if (this.props.user !== undefined) {
@@ -22,15 +23,17 @@ var Doc = React.createClass({
         }
         editor.setCursor(currCursorPosition.row, currCursorPosition.column);
     },
-    componentWillReceiveProps: function(nextProps) {
+
+    componentWillReceiveProps: function (nextProps) {
         if (nextProps.users !== undefined) {
             editor.updateOtherCursors(nextProps.users.objects, nextProps.user);
         }
     },
-    render: function() {
+
+    render: function () {
         return (
-            <div className="content" >
-                <div id="editor"></div>
+            <div className='content' >
+                <div id='editor'></div>
             </div>
         );
     }

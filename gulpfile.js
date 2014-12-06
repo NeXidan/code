@@ -66,7 +66,10 @@ gulp.task('minify', function(){
 gulp.task('views', function() {
     gulp.src(path.pub.views)
         .pipe(react())
-        .pipe(gulp.dest(path.dist.views))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        //.pipe(jscs())
+        .pipe(gulp.dest(path.dist.views));
 });
 
 
