@@ -10,8 +10,6 @@ var ws_lib      = require('ws');
 var Swarm = require('swarm');
 var EinarosWSStream = Swarm.EinarosWSStream;
 
-var development = process.env.NODE_ENV !== 'production';
-
 app.get('/', function (req, res, next) {
     var path = url.parse(req.url).pathname;
     var app = App({id: null, app: path});

@@ -589,6 +589,7 @@ html,body {
     height: 200px;
     border-bottom: solid 20px #f6f5f2;
     background: url("../images/bg.jpg") 100% top #fff;
+    background-size: 100%;
     background-position-y: 10%;
     box-shadow: 0 0 50px rgba(0,0,0,0.9) inset;
     -webkit-animation: header-animation 20s linear infinite alternate;
