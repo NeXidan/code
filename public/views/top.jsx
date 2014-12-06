@@ -57,9 +57,11 @@ var Top = React.createClass({
     componentDidMount: function () {
         this.download(this.props.doc);
     },
+
     componentWillReceiveProps: function (nextProps) {
         this.download(nextProps.doc);
     },
+
     render: function () {
         return (
             <div className='panel panel--top'>
@@ -78,11 +80,12 @@ var Top = React.createClass({
             </div>
         );
     },
+
     download: function (doc) {
         var downloadLink = this.refs.downloadLink.getDOMNode();
         downloadLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(doc.text));
         downloadLink.setAttribute('download', doc.name);
-    },
+    }
 });
 
 module.exports = Top;
