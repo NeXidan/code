@@ -67,11 +67,6 @@ EditorManager.prototype.getCursor = function () {
     return this.ace.getCursorPosition();
 };
 
-EditorManager.prototype.dataReplace = function (coords, data) {
-    var range = new Range(coords.start.row, coords.start.col, coords.end.row, coords.end.col);
-    this.ace.session.replace(range, data);
-};
-
 EditorManager.prototype.dataSet = function (data) {
     this.ace.session.setValue(data);
 };
@@ -84,25 +79,25 @@ EditorManager.prototype.onChange = function (editor, doc) {
 };
 
 EditorManager.prototype.updateOtherCursors = function (data, user) {
-    for (var i = 0; i < this.otherCursors.length; i++) {
-        this.ace.session.removeMarker(this.otherCursors[i]);
-    }
+    this.otherCursors.forEach(function (el) {
+        this.ace.session.removeMarker(el);
+    }, this);
 
     this.otherCursors = [];
 
-    for (var n = 0; n < data.length; n++) {
-        if (data[n] != user) {
-            var range = new Range(data[n].row, data[n].col + 1,
-                data[n].row, data[n].col + 2);
+    data.forEach(function (el) {
+        if (el !== user) {
+            var range = new Range(el.row, el.col + 1,
+                el.row, el.col + 2);
             this.otherCursors.push(
                 this.ace.session.addMarker(
                     range,
-                    'ace_active-line ace_cursor fake-cursor color-' + data[n].color.slice(1) + ' user-' + data[n]._id,
+                    'ace_active-line ace_cursor fake-cursor color-' + el.color.slice(1) + ' user-' + el._id,
                     'text'
                 )
             );
         }
-    }
+    }, this);
 };
 
 module.exports = EditorManager;
