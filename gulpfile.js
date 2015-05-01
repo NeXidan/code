@@ -32,7 +32,7 @@ var path = {
 };
 
 var appFiles = [
-    path.pub.js + 'app/app.js'
+    'js/app/*.js'
 ];
 
 var libs = [
