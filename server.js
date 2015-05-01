@@ -39,8 +39,8 @@ Swarm.env.localhost = swarmHost;
 
 var httpServer = http.createServer(app);
 
-httpServer.listen(5000, function () {
-    console.log('Server started at http://localhost:1337');
+httpServer.listen(process.env.PORT || 5000, function () {
+    console.log('Server started');
 });
 
 var wsServer = new ws_lib.Server({
