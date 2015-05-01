@@ -103,11 +103,11 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], function(){
+    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], batch(function(){
         gulp.start('default');
-    });
+    }));
 });
 
-gulp.task('default', batch(function(){
+gulp.task('default', function(){
     gulp.start('views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify');
 });
