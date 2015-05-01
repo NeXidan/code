@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     react = require('gulp-react'),
     browserify = require('browserify'),
     transform = require('vinyl-transform'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    batch = require('gulp-batch');
 
 var path = {
     pub: {
@@ -54,8 +55,6 @@ gulp.task('minify', function(){
     });
 
     gulp.src(appFiles)
-        .pipe(watch(appFiles))
-        .pipe(watch(path.dist.views))
         .pipe(concat('app.js'))
         .pipe(gulp.dest(path.dist.js))
         .pipe(browserified)
@@ -67,7 +66,6 @@ gulp.task('minify', function(){
 
 gulp.task('views', function() {
     gulp.src(path.pub.views)
-        .pipe(watch(path.pub.views))
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
@@ -105,27 +103,11 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch('public/*.html', function(){
-        gulp.start('static-copy');
-    });
-
-    gulp.watch(path.pub.views, function(){
-        gulp.start('views');
-    });
-
-    gulp.watch(path.dist.views, function(){
-        gulp.start('minify');
-    });
-
-    gulp.watch(path.pub.js + 'app/*.js', function(){
-        gulp.start('jscs', 'hint', 'minify');
-    });
-
-    gulp.watch(path.pub.css, function(){
-        gulp.start('styles');
+    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], function(){
+        gulp.start('default');
     });
 });
 
-gulp.task('default', function(){
+gulp.task('default', batch(function(){
     gulp.start('views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify');
 });
