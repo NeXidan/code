@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "yandex shri team#3 project",
   "main": "gulpfile.js",
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
   "dependencies": {
     "browserify": "^6.3.2",
     "event-stream": "^3.1.7",
@@ -28,7 +32,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "./node_modules/.bin/gulp && node server"
+    "postinstall": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
