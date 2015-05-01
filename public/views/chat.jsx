@@ -45,7 +45,11 @@ var ChatBox = React.createClass({
 
     componentDidUpdate: function (prevProps, prevState) {
         if (prevState.isClosed != this.state.isClosed) {
-            this.state.isClosed ? this.changeHeight(0) : this.changeHeight(224);
+            var height = 0;
+            if (!this.state.isClosed) {
+                height = 224;
+            }
+            this.changeHeight(height);
         }
     },
 
