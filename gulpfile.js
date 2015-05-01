@@ -72,7 +72,6 @@ gulp.task('views', function() {
         .pipe(gulp.dest(path.dist.views));
 });
 
-
 gulp.task('images', function(){
     gulp.src(path.pub.images)
         .pipe(imagemin({
@@ -125,5 +124,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('default', function(){
-    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+    gulp.start('views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify');
 });
