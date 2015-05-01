@@ -104,11 +104,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], batch(function(){
-        gulp.start('default');
-    }));
+    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], ['views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify']);
 });
 
-gulp.task('default', function(){
-    gulp.start('views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify');
-});
+gulp.task('default', ['watch']);
