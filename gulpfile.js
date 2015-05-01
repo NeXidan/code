@@ -11,7 +11,10 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     transform = require('vinyl-transform'),
     imagemin = require('gulp-imagemin'),
-    batch = require('gulp-batch');
+    browserify = require('browserify'),
+	watchify = require('watchify'),
+	reactify = require('reactify'),
+    source = require('vinyl-source-stream');
 
 var path = {
     pub: {
@@ -49,19 +52,22 @@ gulp.task('jscs', function () {
 });
 
 gulp.task('minify', function(){
-    var browserified = transform(function(filename) {
-        var b = browserify(filename);
-        return b.bundle();
-    });
+	var watcher  = watchify(browserify({
+	    entries: appFiles,
+	    transform: [reactify],
+	    debug: true,
+	    cache: {}, packageCache: {}, fullPaths: true
+	}));
 
-    gulp.src(appFiles)
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest(path.dist.js))
-        .pipe(browserified)
-        .pipe(gulp.dest(path.dist.js))
-        .pipe(rename('app.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(path.dist.js));
+	return watcher.on('update', function () {
+	    watcher.bundle()
+	      	.pipe(source('app.js'))
+		    .pipe(gulp.dest(path..dist.js))
+		    console.log('Updated');
+    })
+	    .bundle()
+	    .pipe(source('app.js'))
+	    .pipe(gulp.dest(path.dist.js));
 });
 
 gulp.task('views', function() {
@@ -72,6 +78,7 @@ gulp.task('views', function() {
         //.pipe(jscs())
         .pipe(gulp.dest(path.dist.views));
 });
+
 
 gulp.task('images', function(){
     gulp.src(path.pub.images)
@@ -103,7 +110,27 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch(['public/*.html', path.pub.views, appFiles, path.pub.css], ['views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify']);
+    gulp.watch('public/*.html', function(){
+        gulp.start('static-copy');
+    });
+
+    gulp.watch(path.pub.views, function(){
+        gulp.start('views');
+    });
+
+    gulp.watch(path.dist.views, function(){
+        gulp.start('minify');
+    });
+
+    gulp.watch(path.pub.js + 'app/*.js', function(){
+        gulp.start('jscs', 'hint', 'minify');
+    });
+
+    gulp.watch(path.pub.css, function(){
+        gulp.start('styles');
+    });
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', function(){
+    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+});

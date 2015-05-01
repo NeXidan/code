@@ -29,7 +29,10 @@
     "react-async": "^1.0.2",
     "swarm": "0.3.23",
     "vinyl-transform": "0.0.1",
-    "ws": "^0.4.32"
+    "ws": "^0.4.32",
+    "watchify": "*",
+	"reactify": "*",
+    "vinyl-source-stream": "*"
   },
   "devDependencies": {},
   "scripts": {
