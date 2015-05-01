@@ -54,6 +54,8 @@ gulp.task('minify', function(){
     });
 
     gulp.src(appFiles)
+        .pipe(watch(appFiles))
+        .pipe(watch(path.dist.views))
         .pipe(concat('app.js'))
         .pipe(gulp.dest(path.dist.js))
         .pipe(browserified)
@@ -65,6 +67,7 @@ gulp.task('minify', function(){
 
 gulp.task('views', function() {
     gulp.src(path.pub.views)
+        .pipe(watch(path.pub.views))
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
