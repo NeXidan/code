@@ -29,8 +29,7 @@ var path = {
 };
 
 var appFiles = [
-    path.pub.js + 'app/*.js',
-    path.dist.views
+    path.pub.js + 'app/*.js'
 ];
 
 var libs = [
@@ -104,7 +103,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function(){
-    gulp.watch(['public/*.html', path.pub.views, path.dist.views, appFiles, path.pub.css], ['views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify']);
+    gulp.watch(['public/*.html', path.pub.views, appFiles, path.pub.css], ['views', 'images', 'jscs', 'hint', 'styles', 'static-copy', 'minify']);
 });
 
 gulp.task('default', ['watch']);
