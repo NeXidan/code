@@ -32,7 +32,7 @@ var path = {
 };
 
 var appFiles = [
-    path.pub.js + 'app/*.js'
+    path.pub.js + 'app/app.js'
 ];
 
 var libs = [
@@ -47,7 +47,7 @@ gulp.task('hint', function() {
 });
 
 gulp.task('jscs', function () {
-    gulp.src(path.pub.js + 'app/app.js')
+    gulp.src(path.pub.js + 'app/*')
         .pipe(jscs());
 });
 
