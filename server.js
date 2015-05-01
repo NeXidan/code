@@ -39,7 +39,7 @@ Swarm.env.localhost = swarmHost;
 
 var httpServer = http.createServer(app);
 
-httpServer.listen(1337, function () {
+httpServer.listen(5000, function () {
     console.log('Server started at http://localhost:1337');
 });
 
