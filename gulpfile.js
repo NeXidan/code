@@ -29,7 +29,8 @@ var path = {
 };
 
 var appFiles = [
-    path.pub.js + 'app/*.js'
+    path.pub.js + 'app/*.js',
+    path.dist.views
 ];
 
 var libs = [
