@@ -62,7 +62,7 @@ gulp.task('minify', function(){
 	return watcher.on('update', function () {
 	    watcher.bundle()
 	      	.pipe(source('app.js'))
-		    .pipe(gulp.dest(path..dist.js))
+		    .pipe(gulp.dest(path.dist.js))
 		    console.log('Updated');
     })
 	    .bundle()
