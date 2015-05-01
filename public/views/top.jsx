@@ -17,12 +17,12 @@ var Profile = React.createClass({
                 <form onSubmit={this.handleSubmit} className='inline-b'>
                     <input type='text' defaultValue={this.props.user.name} 
                             ref='input' className='profile__name__input' onChange={this.handleChange}/>
-                </form>
+                </form>;
         } else {
             profileName =
                 <span className='cursor-p' onClick={this.handleClick}>
                     {this.props.user.name}
-                </span>
+                </span>;
         }
         return (
             <div className='profile'>
