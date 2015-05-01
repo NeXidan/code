@@ -47,7 +47,7 @@ gulp.task('hint', function() {
 });
 
 gulp.task('jscs', function () {
-    gulp.src(path.pub.js + 'app/*')
+    gulp.src(path.pub.js + 'app/app.js')
         .pipe(jscs());
 });
 
