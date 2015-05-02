@@ -53,7 +53,7 @@ gulp.task('minify', ['views'], function(){
         return b.bundle();
     });
 
-    gulp.src(appFiles)
+    return gulp.src(appFiles)
         .pipe(concat('app.js'))
         .pipe(gulp.dest(path.dist.js))
         .pipe(browserified)
@@ -63,14 +63,13 @@ gulp.task('minify', ['views'], function(){
         .pipe(gulp.dest(path.dist.js));
 });
 
-gulp.task('views', function(cb) {
-    gulp.src(path.pub.views)
+gulp.task('views', function() {
+    return gulp.src(path.pub.views)
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         //.pipe(jscs())
         .pipe(gulp.dest(path.dist.views));
-    cb();
 });
 
 
