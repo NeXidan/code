@@ -10,11 +10,7 @@ var gulp = require('gulp'),
     react = require('gulp-react'),
     browserify = require('browserify'),
     transform = require('vinyl-transform'),
-    imagemin = require('gulp-imagemin'),
-    browserify = require('browserify'),
-	watchify = require('watchify'),
-	reactify = require('reactify'),
-    source = require('vinyl-source-stream');
+    imagemin = require('gulp-imagemin');
 
 var path = {
     pub: {
@@ -32,7 +28,7 @@ var path = {
 };
 
 var appFiles = [
-    '../public/js/app/*.js'
+    path.pub.js + 'app/*.js'
 ];
 
 var libs = [
@@ -52,22 +48,19 @@ gulp.task('jscs', function () {
 });
 
 gulp.task('minify', function(){
-	var watcher  = watchify(browserify({
-	    entries: appFiles,
-	    transform: [reactify],
-	    debug: true,
-	    cache: {}, packageCache: {}, fullPaths: true
-	}));
+    var browserified = transform(function(filename) {
+        var b = browserify(filename);
+        return b.bundle();
+    });
 
-	return watcher.on('update', function () {
-	    watcher.bundle()
-	      	.pipe(source('app.js'))
-		    .pipe(gulp.dest(path.dist.js))
-		    console.log('Updated');
-    })
-	    .bundle()
-	    .pipe(source('app.js'))
-	    .pipe(gulp.dest(path.dist.js));
+    gulp.src(appFiles)
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest(path.dist.js))
+        .pipe(browserified)
+        .pipe(gulp.dest(path.dist.js))
+        .pipe(rename('app.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.dist.js));
 });
 
 gulp.task('views', function() {
