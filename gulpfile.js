@@ -160,9 +160,9 @@ gulp.task('watch', function(){
 //}); 
 
 gulp.task('build', function() {
-  return buildScript('app.js', false);
+  return buildScript('app/app.js', false);
 });
  
 gulp.task('default', ['views', 'images', 'styles', 'static-copy', 'build'], function() {
-  return buildScript('app.js', true);
+  return buildScript('app/app.js', true);
 });
