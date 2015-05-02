@@ -47,7 +47,7 @@ gulp.task('jscs', function () {
         .pipe(jscs());
 });
 
-gulp.task('minify', function(){
+gulp.task('minify', [views], function(){
     var browserified = transform(function(filename) {
         var b = browserify(filename);
         return b.bundle();
