@@ -30,9 +30,13 @@
     "swarm": "0.3.23",
     "vinyl-transform": "0.0.1",
     "ws": "^0.4.32",
-    "watchify": "*",
-	"reactify": "*",
-    "vinyl-source-stream": "*"
+    "envify": "~1.2.1",
+    "browserify": "~4.2.0",
+    "gulp-notify": "~1.4.0",
+    "gulp-util": "~2.2.19",
+    "reactify": "~0.13.1",
+    "vinyl-source-stream": "~0.1.1",
+    "watchify": "~0.10.2"
   },
   "devDependencies": {},
   "scripts": {

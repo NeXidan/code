@@ -10,7 +10,12 @@ var gulp = require('gulp'),
     react = require('gulp-react'),
     browserify = require('browserify'),
     transform = require('vinyl-transform'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    source = require('vinyl-source-stream'),
+    gutil = require('gulp-util'),
+    reactify = require('reactify'),
+    watchify = require('watchify'),
+    notify = require("gulp-notify");
 
 var path = {
     pub: {
@@ -34,6 +39,32 @@ var appFiles = [
 var libs = [
     path.pub.js + 'libs/ace.js'
 ];
+
+function handleErrors() {
+  var args = Array.prototype.slice.call(arguments);
+  notify.onError({
+    title: "Compile Error",
+    message: "<%= error.message %>"
+  }).apply(this, args);
+  this.emit('end'); // Keep gulp from hanging on this task
+}
+
+function buildScript(file, watch) {
+  var props = {entries: [path.pub.js + '/' + file]};
+  var bundler = watch ? watchify(props) : browserify(props);
+  bundler.transform(reactify);
+  function rebundle() {
+    var stream = bundler.bundle({debug: true});
+    return stream.on('error', handleErrors)
+    .pipe(source(file))
+    .pipe(gulp.dest(path.dist.js + '/'));
+  }
+  bundler.on('update', function() {
+    rebundle();
+    gutil.log('Rebundle...');
+  });
+  return rebundle();
+}
 
 gulp.task('hint', function() {
     gulp.src(path.pub.js + 'app/*.js')
@@ -123,7 +154,15 @@ gulp.task('watch', function(){
         gulp.start('styles');
     });
 });
+//
+//gulp.task('default', function(){
+//    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+//}); 
 
-gulp.task('default', function(){
-    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
+gulp.task('build', function() {
+  return buildScript('app.js', false);
+});
+ 
+gulp.task('default', ['views', 'images', 'styles', 'static-copy', 'build'], function() {
+  return buildScript('app.js', true);
 });
