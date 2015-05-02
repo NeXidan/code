@@ -50,14 +50,14 @@ function handleErrors() {
 }
 
 function buildScript(file, watch) {
-  var props = {entries: [path.pub.js + '/' + file]};
+  var props = {entries: [path.pub.js + file]};
   var bundler = watch ? watchify(props) : browserify(props);
   bundler.transform(reactify);
   function rebundle() {
     var stream = bundler.bundle({debug: true});
     return stream.on('error', handleErrors)
     .pipe(source(file))
-    .pipe(gulp.dest(path.dist.js + '/'));
+    .pipe(gulp.dest(path.dist.js));
   }
   bundler.on('update', function() {
     rebundle();
