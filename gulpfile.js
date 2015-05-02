@@ -124,6 +124,4 @@ gulp.task('watch', function(){
     });
 });
 
-gulp.task('default', function(){
-    gulp.start('views', 'images', 'jscs', 'hint', 'minify', 'styles', 'static-copy');
-});
+gulp.task('default', ['images', 'jscs', 'hint', 'minify', 'styles', 'static-copy']);
