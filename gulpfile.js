@@ -63,13 +63,14 @@ gulp.task('minify', ['views'], function(){
         .pipe(gulp.dest(path.dist.js));
 });
 
-gulp.task('views', function() {
+gulp.task('views', function(cb) {
     gulp.src(path.pub.views)
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         //.pipe(jscs())
         .pipe(gulp.dest(path.dist.views));
+    cb();
 });
 
 
