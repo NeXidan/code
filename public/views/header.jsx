@@ -21,7 +21,7 @@ var Header = React.createClass({
     render: function() {
         return (
             <div className="header">
-                <Logo title="Яндекс" subtitle="код"/>
+                <Logo title="Онлайн" subtitle="код"/>
             </div>
         );
     }

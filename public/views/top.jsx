@@ -68,7 +68,7 @@ var Top = React.createClass({
                 <div className='project'>
                     <div className='project__logo'>
                         <a className='logo__text__a' href='/'>
-                            Яндекс.Код
+                            Онлайн.Код
                         </a>
                     </div>
                     <span className='project__name'>
