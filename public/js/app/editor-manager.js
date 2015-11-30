@@ -55,6 +55,14 @@ EditorManager.prototype.setMode = function () {
     }
 };
 
+EditorManager.prototype.setSession = function (session) {
+    this.ace.session = session;
+};
+
+EditorManager.prototype.getSession = function () {
+    return this.ace.session;
+};
+
 EditorManager.prototype.setCursor = function (row, col) {
     this.ace.moveCursorTo(row, col);
 };

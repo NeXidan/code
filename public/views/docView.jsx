@@ -16,11 +16,16 @@ var Doc = React.createClass({
     },
 
     componentWillUpdate: function () {
-        var currCursorPosition = editor.getCursor();
+        var currCursorPosition = editor.getCursor(),
+            currSession = editor.getSession();
+
         editor.dataSet(this.props.doc.text);
+
         if (this.props.user !== undefined) {
             this.props.user.set({row: currCursorPosition.row, col: currCursorPosition.column});
         }
+
+        editor.setSession(currSession);
         editor.setCursor(currCursorPosition.row, currCursorPosition.column);
     },
 
