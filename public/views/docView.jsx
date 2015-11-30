@@ -17,7 +17,7 @@ var Doc = React.createClass({
 
     componentWillUpdate: function () {
         var currCursorPosition = editor.getCursor(),
-            currSession = editor.getSession();
+            currScrollTop = editor.getScrollTop();
 
         editor.dataSet(this.props.doc.text);
 
@@ -25,8 +25,8 @@ var Doc = React.createClass({
             this.props.user.set({row: currCursorPosition.row, col: currCursorPosition.column});
         }
 
-        editor.setSession(currSession);
         editor.setCursor(currCursorPosition.row, currCursorPosition.column);
+        editor.setScrollTop(currScrollTop);
     },
 
     componentWillReceiveProps: function (nextProps) {

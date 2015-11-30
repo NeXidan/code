@@ -55,12 +55,12 @@ EditorManager.prototype.setMode = function () {
     }
 };
 
-EditorManager.prototype.setSession = function (session) {
-    this.ace.session = session;
+EditorManager.prototype.setScrollTop = function (scroll) {
+    this.ace.session.setScrollTop(scroll);
 };
 
-EditorManager.prototype.getSession = function () {
-    return this.ace.session;
+EditorManager.prototype.getScrollTop = function () {
+    return this.ace.session.getScrollTop();
 };
 
 EditorManager.prototype.setCursor = function (row, col) {
