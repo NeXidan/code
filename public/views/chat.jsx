@@ -28,8 +28,10 @@ var Message = React.createClass({
     render: function () {
         var color = {color: this.sync.color};
 
-        if (!this.sync.name) {
-            return;
+        if (this.sync.name === undefined) {
+            return (
+                <div></div>
+            );
         }
 
         return (
