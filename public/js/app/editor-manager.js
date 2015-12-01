@@ -95,15 +95,15 @@ EditorManager.prototype.setState = function (state) {
     state = state || {};
 
     if (state.cursor) {
-        this.setCursor(state);
+        this.setCursor(state.state);
     }
 
     if (state.scroll) {
-        this.setScroll(scroll);
+        this.setScroll(state.scroll);
     }
 
     if (state.selection) {
-        this.setSelection(selection);
+        this.setSelection(state.selection);
     }
 };
 
