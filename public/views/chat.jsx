@@ -53,10 +53,6 @@ var ChatBox = React.createClass({
         }
     },
 
-    componentWillReceiveProps: function (props) {
-        console.log(props);
-    },
-
     render: function () {
         var users = this.props.users.objects.map(function (obj) {
             return (
@@ -134,6 +130,10 @@ var Chat = React.createClass({
         var chatMessages = this.sync;
         if (chatMessages === null) {
             this.chatMessages = new ChatMessages({_id: this.props.key});
+        
+            this.chatMessages.on('change', function () {
+                console.log('change');
+            });
         }
     },
 
