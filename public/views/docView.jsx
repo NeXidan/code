@@ -21,14 +21,14 @@ var Doc = React.createClass({
         editor.saveState(function (state) {
             editor.dataSet(_this.props.doc.text);
 
-            if (_this.props.user !== undefined) {
+            if (_this.props.user) {
                 _this.props.user.set({row: state.cursor.row, col: state.cursor.column});
             }
         });
     },
 
     componentWillReceiveProps: function (nextProps) {
-        if (nextProps.users !== undefined) {
+        if (nextProps.users) {
             editor.updateOtherCursors(nextProps.users.objects, nextProps.user);
         }
     },

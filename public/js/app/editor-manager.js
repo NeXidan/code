@@ -95,7 +95,7 @@ EditorManager.prototype.setState = function (state) {
     state = state || {};
 
     if (state.cursor) {
-        this.setCursor(state.state);
+        this.setCursor(state.cursor);
     }
 
     if (state.scroll) {
