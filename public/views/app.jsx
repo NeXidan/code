@@ -12,7 +12,7 @@ var App = React.createClass({
                 <head>
                     <meta charSet='UTF-8'/>
                     <title>App Frontpage</title>
-                    <link rel='shortcut icon'href='//yastatic.net/lego/_/pDu9OWAQKB0s2J9IojKpiS_Eho.ico'/>
+                    <link rel='shortcut icon'href='images/favicon.ico'/>
                     <link rel='stylesheet' href='css/main.css'/>
                 </head>
                 <body>
