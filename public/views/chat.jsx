@@ -30,14 +30,14 @@ var Message = React.createClass({
     },
 
     render: function () {
-        var color = {color: this.props.color};
+        var color = {color: this.sync.color};
         return (
             <div className='chat__body__box__message'>
                 <span className='chat__body__box__message__text'>
                     <span className='user__name' style={color}>
-                        {this.props.name + ': '}
+                        {this.sync.name + ': '}
                     </span>
-                    {this.props.text}
+                    {this.sync.text}
                 </span>
             </div>
         );
@@ -71,7 +71,7 @@ var ChatBox = React.createClass({
         }, this);
         var messages = this.props.messages.objects.map(function (obj) {
             return (
-                <Message text={obj.text} name={obj.name} color={obj.color} key={obj._id}/> 
+                <Message key={obj._id}/> 
             );
         }, this);
         var chatStyle = {height: this.state.chatHeight};
