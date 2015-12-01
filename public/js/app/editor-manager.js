@@ -68,11 +68,11 @@ EditorManager.prototype.getScroll = function () {
 };
 
 EditorManager.prototype.getSelection = function () {
-    return this.ace.session.getRange();
+    return this.ace.selection.getRange();
 };
 
 EditorManager.prototype.setSelection = function (range) {
-    this.ace.session.setSelectionRange(range);
+    this.ace.selection.setSelectionRange(range);
 };
 
 EditorManager.prototype.setCursor = function (row, col) {
