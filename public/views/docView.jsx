@@ -16,19 +16,15 @@ var Doc = React.createClass({
     },
 
     componentWillUpdate: function () {
-        var currCursorPosition = editor.getCursor(),
-            currScroll = editor.getScroll(),
-            currSelection = editor.getSelection();
+        var _this = this;
 
-        editor.dataSet(this.props.doc.text);
+        editor.saveState(function (state) {
+            editor.dataSet(this.props.doc.text);
 
-        if (this.props.user !== undefined) {
-            this.props.user.set({row: currCursorPosition.row, col: currCursorPosition.column});
-        }
-
-        editor.setCursor(currCursorPosition.row, currCursorPosition.column);
-        editor.setScroll(currScroll);
-        editor.setSelection(currSelection);
+            if (this.props.user !== undefined) {
+                this.props.user.set({row: state.cursor.row, col: state.cursor.column});
+            }
+        });
     },
 
     componentWillReceiveProps: function (nextProps) {

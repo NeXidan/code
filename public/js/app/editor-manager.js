@@ -75,16 +75,48 @@ EditorManager.prototype.setSelection = function (range) {
     this.ace.selection.setSelectionRange(range);
 };
 
-EditorManager.prototype.setCursor = function (row, col) {
-    this.ace.moveCursorTo(row, col);
-};
-
-EditorManager.prototype.removeMarker = function () {
-    this.ace.session.removeMarker(this.marker);
+EditorManager.prototype.setCursor = function (cursor) {
+    this.ace.moveCursorTo(cursor.row, cursor.col);
 };
 
 EditorManager.prototype.getCursor = function () {
     return this.ace.getCursorPosition();
+};
+
+EditorManager.prototype.getState = function () {
+    return {
+        cursor: this.getCursor(),
+        scroll: this.getScroll(),
+        selection: this.getSelection()
+    };
+};
+
+EditorManager.prototype.setState = function (state) {
+    state = state || {};
+
+    if (state.cursor) {
+        this.setCursor(state);
+    }
+
+    if (state.scroll) {
+        this.setScroll(scroll);
+    }
+
+    if (state.selection) {
+        this.setSelection(selection);
+    }
+};
+
+EditorManager.prototype.saveState = function (callback) {
+    var state = this.getState();
+
+    callback(state);
+
+    this.setState(state);
+};
+
+EditorManager.prototype.removeMarker = function () {
+    this.ace.session.removeMarker(this.marker);
 };
 
 EditorManager.prototype.dataSet = function (data) {
