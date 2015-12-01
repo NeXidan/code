@@ -25,12 +25,13 @@ var Message = React.createClass({
         modelType: 'ChatMessage'
     },
 
-    componentWillMount: function () {
-        console.log(this.sync);
-    },
-
     render: function () {
         var color = {color: this.sync.color};
+
+        if (!this.sync.name) {
+            return;
+        }
+
         return (
             <div className='chat__body__box__message'>
                 <span className='chat__body__box__message__text'>
