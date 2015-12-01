@@ -132,7 +132,7 @@ var Chat = React.createClass({
             this.chatMessages = new ChatMessages({_id: this.props.key});
         }        
 
-        this.sync.on('change', function () {
+        this.sync.on(function () {
             console.log('change');
         });
     },
