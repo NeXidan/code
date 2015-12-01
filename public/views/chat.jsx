@@ -53,6 +53,10 @@ var ChatBox = React.createClass({
         }
     },
 
+    componentWillReceiveProps: function (props) {
+        console.log(props);
+    },
+
     render: function () {
         var users = this.props.users.objects.map(function (obj) {
             return (
