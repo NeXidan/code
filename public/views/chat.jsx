@@ -3,6 +3,8 @@ var ChatMessages = require('../../models/chatMessages');
 var ChatMessage = require('../../models/chatMessage');
 var Swarm = require('swarm');
 
+const KEY_ENTER = 13;
+
 var User = React.createClass({
     render: function () {
         var color = {backgroundColor: this.props.color};
@@ -101,7 +103,7 @@ var ChatBox = React.createClass({
                 }
                 <div className='chat__footer'>
                     <input type='text' className='chat__footer__input' ref='input' 
-                        value={this.state.message} onChange={this.handleChange}/>
+                        value={this.state.message} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
                     <button onClick={this.handleSubmit} className='btn btn--sm chat__footer__btn'>
                         Отправить
                     </button>
@@ -114,8 +116,21 @@ var ChatBox = React.createClass({
         this.setState({isClosed: !this.state.isClosed});
     },
 
+    handleKeyDown: function (event) {
+        if (event.keyCode === KEY_ENTER) {
+            this.handleSubmit();
+        }
+    },
+
     handleSubmit: function () {
-        var message = new ChatMessage({text: this.refs.input.getDOMNode().value, name: this.props.user.name, color: this.props.user.color});
+        var text = this.refs.input.getDOMNode().value,
+            message;
+
+        if (!text) {
+            return;
+        }
+
+        message = new ChatMessage({text: text, name: this.props.user.name, color: this.props.user.color});
         this.props.messages.addObject(message);
         this.setState({message: ''});
     },
