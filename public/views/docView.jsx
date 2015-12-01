@@ -19,10 +19,10 @@ var Doc = React.createClass({
         var _this = this;
 
         editor.saveState(function (state) {
-            editor.dataSet(this.props.doc.text);
+            editor.dataSet(_this.props.doc.text);
 
-            if (this.props.user !== undefined) {
-                this.props.user.set({row: state.cursor.row, col: state.cursor.column});
+            if (_this.props.user !== undefined) {
+                _this.props.user.set({row: state.cursor.row, col: state.cursor.column});
             }
         });
     },
