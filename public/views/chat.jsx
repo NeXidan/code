@@ -130,11 +130,11 @@ var Chat = React.createClass({
         var chatMessages = this.sync;
         if (chatMessages === null) {
             this.chatMessages = new ChatMessages({_id: this.props.key});
-        
-            this.chatMessages.on('all', function () {
-                console.log('all');
-            });
-        }
+        }        
+
+        this.sync.on('change', function () {
+            console.log('change');
+        });
     },
 
     render: function () {
