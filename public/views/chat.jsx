@@ -19,6 +19,12 @@ var User = React.createClass({
 });
 
 var Message = React.createClass({
+    mixins: [ Swarm.ReactMixin ],
+
+    statics: {
+        modelType: 'ChatMessage'
+    },
+
     componentWillMount: function () {
         console.log(this.sync);
     },
