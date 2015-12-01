@@ -11,8 +11,8 @@ var App = React.createClass({
             <html>
                 <head>
                     <meta charSet='UTF-8'/>
-                    <title>App Frontpage</title>
-                    <link rel='shortcut icon'href='images/favicon.ico'/>
+                    <title>Онлайн.Код</title>
+                    <link rel='shortcut icon' href='images/favicon.ico'/>
                     <link rel='stylesheet' href='css/main.css'/>
                 </head>
                 <body>
