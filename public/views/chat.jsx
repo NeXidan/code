@@ -19,6 +19,10 @@ var User = React.createClass({
 });
 
 var Message = React.createClass({
+    componentWillMount: function () {
+        console.log(this.sync);
+    },
+
     render: function () {
         var color = {color: this.props.color};
         return (
@@ -124,17 +128,6 @@ var Chat = React.createClass({
 
     statics: {
         modelType: 'ChatMessages'
-    },
-
-    componentWillMount: function () {
-        var chatMessages = this.sync;
-        if (chatMessages === null) {
-            this.chatMessages = new ChatMessages({_id: this.props.key});
-        }        
-
-        this.sync.on(function () {
-            console.log('change');
-        });
     },
 
     render: function () {
