@@ -55,12 +55,24 @@ EditorManager.prototype.setMode = function () {
     }
 };
 
-EditorManager.prototype.setScrollTop = function (scroll) {
-    this.ace.session.setScrollTop(scroll);
+EditorManager.prototype.setScroll = function (scroll) {
+    this.ace.session.setScrollTop(scroll.top);
+    this.ace.session.setScrollLeft(scroll.left);
 };
 
-EditorManager.prototype.getScrollTop = function () {
-    return this.ace.session.getScrollTop();
+EditorManager.prototype.getScroll = function () {
+    return {
+        top: this.ace.session.getScrollTop(),
+        left: this.ace.session.getScrollLeft()
+    };
+};
+
+EditorManager.prototype.getSelection = function () {
+    return this.ace.session.getRange();
+};
+
+EditorManager.prototype.setSelection = function (range) {
+    this.ace.session.setSelectionRange(range);
 };
 
 EditorManager.prototype.setCursor = function (row, col) {
