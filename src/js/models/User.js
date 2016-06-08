@@ -8,10 +8,6 @@ var COLORS = [
     '#ff7f00','#ffff33','#a65628','#f781bf','#999999',"#666666"
 ];
 
-function factory(ssnId) {
-    return new User({sessionId: ssnId, color: getRandomColor()});
-};
-
 function getRandomColor() {
     return COLORS[Math.floor(Math.random() * COLORS.length)];
 };
@@ -27,4 +23,6 @@ var User = module.exports = Swarm.Model.extend('User', {
     }
 });
 
-module.exports.factory = factory;
+module.exports.factory = function (ssnId) {
+    return new User({sessionId: ssnId, color: getRandomColor()});
+};;

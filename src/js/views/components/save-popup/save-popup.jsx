@@ -1,3 +1,5 @@
+var browserHistory = require('react-router').browserHistory;
+
 var Document = require('../../../models/Document');
 
 var SavePopup = module.exports = React.createClass({
@@ -35,7 +37,9 @@ var SavePopup = module.exports = React.createClass({
 
     handleSave: function () {
         Document.factory(this.state.name, function (d) {
-            setTimeout(function () {window.location.pathname = '/' + d._id;}, 300);
+            setTimeout(function () {
+                browserHistory.push('/' + d._id);
+            }, 300);
         });
     }
 });

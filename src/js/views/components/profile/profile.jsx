@@ -9,6 +9,7 @@ var Profile = module.exports = React.createClass({
     render: function () {
         var color = {backgroundColor: this.props.user.color};
         var profileName;
+
         if (this.state.isShownInput) {
             profileName =
                 <form onSubmit={this.handleSubmit} className='inline-b'>
@@ -21,6 +22,7 @@ var Profile = module.exports = React.createClass({
                     {this.props.user.name}
                 </span>;
         }
+
         return (
             <div className='profile'>
                 <span className='profile__name'>
@@ -42,10 +44,12 @@ var Profile = module.exports = React.createClass({
         });
     },
 
-    handleSubmit: function () {
+    handleSubmit: function (event) {
         if (this.state.username !== '') {
             this.props.user.set({name: this.state.username});
             this.setState({isShownInput: false});
         }
+
+        event.preventDefault();
     }
 });

@@ -3,7 +3,10 @@ var Message = require('../../../models/Message');
 var ChatMessage = require('./message');
 var User = require('../user/user');
 
-const KEY_ENTER = 13;
+var KEY_ENTER = 13;
+
+var CLOSED_HEIGHT = 0;
+var OPEN_HEIGHT = 224;
 
 var ChatBox = module.exports = React.createClass({
     getInitialState: function () {
@@ -16,10 +19,7 @@ var ChatBox = module.exports = React.createClass({
 
     componentDidUpdate: function (prevProps, prevState) {
         if (prevState.isClosed != this.state.isClosed) {
-            var height = 0;
-            if (!this.state.isClosed) {
-                height = 224;
-            }
+            var height = this.state.isClosed ? CLOSED_HEIGHT : OPEN_HEIGHT;
             this.changeHeight(height);
         }
     },
@@ -37,7 +37,7 @@ var ChatBox = module.exports = React.createClass({
                 <div className='chat__body' style={chatStyle}>
                     <div className='chat__body__box'>
                     {this.props.messages.objects.map(function(obj) {
-                        return <ChatMessage key={obj._id} spec={obj._id}/>;
+                        return <ChatMessage key={obj._id} spec={'/Message#' + obj._id}/>;
                     })}
                     </div>
                     <div className='chat__body__users'>
@@ -46,7 +46,7 @@ var ChatBox = module.exports = React.createClass({
                         </h5>
                         <hr/>
                         {this.props.users.objects.map(function(obj) {
-                            return <User name={obj.name} color={obj.color} key={obj._id} spec={obj._id} />;
+                            return <User key={obj._id} spec={'/User#' + obj._id} />;
                         })}
                     </div>
                 </div>
@@ -73,14 +73,13 @@ var ChatBox = module.exports = React.createClass({
     },
 
     handleSubmit: function () {
-        var text = this.refs.input.value,
-            message;
+        var text = this.refs.input.value;
 
         if (!text) {
             return;
         }
 
-        message = new Message({text: text, name: this.props.user.name, color: this.props.user.color});
+        var message = new Message({text: text, name: this.props.user.name, color: this.props.user.color});
         this.props.messages.addObject(message);
         this.setState({message: ''});
     },

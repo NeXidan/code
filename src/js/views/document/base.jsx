@@ -112,7 +112,6 @@ var Base = module.exports = React.createClass({
     userDisconnect: function (user) {
         collection.removeObject(collection.indexOf(user));
         this.setState({users: collection});
-        console.log('User ' + user._id + ' disconnected');
         this.forceUpdate();
     }
 });
