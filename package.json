@@ -10,6 +10,7 @@
   "dependencies": {
     "ace-webapp": "^0.2.0",
     "babelify": "^7.3.0",
+    "babel-preset-react": "^6.5.0",
     "browserify": "8.0.1",
     "browserify-shim": "^3.8.2",
     "del": "^2.2.0",
@@ -26,9 +27,6 @@
     "swarm": "0.3.23",
     "vinyl-transform": "^1.0.0",
     "ws": "^0.4.32"
-  },
-  "devDependencies": {
-    "babel-preset-react": "^6.5.0"
   },
   "browser": {
     "react": "./node_modules/react/dist/react.js",
