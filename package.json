@@ -1,6 +1,6 @@
 {
   "name": "team-3",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "yandex shri team#3 project",
   "main": "gulpfile.js",
   "engines": {
@@ -8,29 +8,42 @@
     "npm": "*"
   },
   "dependencies": {
-    "browserify": "^6.3.2",
-    "event-stream": "^3.1.7",
+    "ace-webapp": "^0.2.0",
+    "babelify": "^7.3.0",
+    "browserify": "8.0.1",
+    "browserify-shim": "^3.8.2",
+    "del": "^2.2.0",
     "express": "^4.9.8",
-    "fibers": "^1.0.2",
-    "gulp": "^3.8.8",
-    "gulp-autoprefixer": "^1.0.1",
-    "gulp-concat": "^2.4.1",
-    "gulp-csscomb": "^3.0.3",
-    "gulp-imagemin": "^2.0.0",
-    "gulp-jscs": "^1.2.0",
-    "gulp-jshint": "^1.8.5",
-    "gulp-minify-css": "^0.3.11",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-notify": "^2.0.0",
-    "gulp-react": "^1.0.2",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^1.0.1",
-    "react": "^0.11.2",
-    "react-async": "^1.0.2",
+    "gulp-rename": "^1.2.2",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.2.1",
     "swarm": "0.3.23",
-    "vinyl-transform": "0.0.1",
+    "vinyl-transform": "^1.0.0",
     "ws": "^0.4.32"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0"
+  },
+  "browser": {
+    "react": "./node_modules/react/dist/react.js",
+    "react-dom": "./node_modules/react-dom/dist/react-dom.min.js"
+  },
+  "browserify-shim": {
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "swarm": "Swarm"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
   "scripts": {
     "postinstall": "./node_modules/.bin/gulp"
   },
