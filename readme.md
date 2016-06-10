@@ -12,21 +12,19 @@
     git clone https://github.com/NeXidan/team-3
     npm install
 
-Сервер запустится по адресу [http://localhost:1337/](http://localhost:1337/)
-
-> <b>Known Bug</b>: иногда для правильного функионирования gulp'а потребуется создать файлы `index.js`, `step.js`, `popup.js` в директории `./dist/views/` -- <b>FIXED!</b>
+Сервер запустится по адресу [http://localhost:8000/](http://localhost:8000/)
 
 ## Структура:
 
-- `public/` -- Несобранные gulp'ом исходники
+- `src/` -- Исходники
     - `css/` -- Наборы стилей (.css)
     - `images/` -- Различные изображения
     - `js/` -- Javascript файлы (.js)
-      - `app/` -- JS файлы приложения
-      - `libs/` -- библиотеки и конфигурация ACE
-    - `views/` -- Шаблоны React'a (.jsx)
-- `models/` -- Модели Swarm'a
-- `dist/` -- Результат работы gulp'a, все собранные клиентские файлы
+      - `editor/` -- Работа с редактором ACE
+      - `views/` -- Шаблоны React'a (.jsx)
+      - `models/` -- Модели Swarm'a
+      - `collections/` -- Коллекции Swarm'a
+- `www/` -- Результат работы gulp'a, все собранные клиентские файлы
  
 ## Вклад в проект:
 
